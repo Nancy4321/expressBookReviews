@@ -28,9 +28,9 @@ public_users.get('/',function (req, res) {
   res.send(JSON.stringify(books,null,4));
 });
 
-// Get book details based on ISBN
-public_users.get('/',function (req, res) {
-    axios.get('/')
+// Get book details
+public_users.get('/', async function (req, res) {
+    await axios.get('/')
       .then(response => {
         res.send(response.data);
       })
@@ -50,8 +50,8 @@ public_users.get('/',function (req, res) {
   });
   
   // Get book details based on author
-  public_users.get('/author/:author',function (req, res) {
-    axios.get(`author/${req.params.author}`)
+  public_users.get('/author/:author',async function (req, res) {
+    await axios.get(`author/${req.params.author}`)
       .then(response => {
         res.send(response.data);
       })
